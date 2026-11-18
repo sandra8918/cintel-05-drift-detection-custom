@@ -13,7 +13,7 @@
 # ============================================================
 
 [project]
-name = "cintel-05-drift-detection"  # Usually matches repository name (use lowercase and dashes).
+name = "cintel-05-drift-detection-custom"  # Usually matches repository name (use lowercase and dashes).
 readme = "README.md"
 requires-python = ">=3.14"
 version = "0.1.0"
