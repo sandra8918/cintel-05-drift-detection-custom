@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="800"
+     height="480"
+     viewBox="0 0 800 480"
+     role="img"
+     aria-labelledby="title description">
+
+  <title id="title">Reference versus current mean error rate</title>
+
+  <desc id="description">
+    The reference mean error rate is 1.79 percent and the current mean error rate is 3.82 percent.
+  </desc>
+
+  <rect width="800" height="480" fill="#ffffff"/>
+
+  <text x="400"
+        y="38"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="24"
+        font-weight="bold"
+        fill="#1f2937">
+    Mean Error Rate Comparison
+  </text>
+
+  <text x="400"
+        y="65"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="15"
+        fill="#4b5563">
+    Reference: 1.79% | Current: 3.82%
+  </text>
+
+  <!-- Grid lines -->
+  <line x1="120" y1="390" x2="720" y2="390" stroke="#d1d5db" stroke-width="1"/>
+  <line x1="120" y1="321" x2="720" y2="321" stroke="#e5e7eb" stroke-width="1"/>
+  <line x1="120" y1="252" x2="720" y2="252" stroke="#e5e7eb" stroke-width="1"/>
+  <line x1="120" y1="183" x2="720" y2="183" stroke="#e5e7eb" stroke-width="1"/>
+  <line x1="120" y1="114" x2="720" y2="114" stroke="#e5e7eb" stroke-width="1"/>
+
+  <!-- Axes -->
+  <line x1="120" y1="80" x2="120" y2="390" stroke="#374151" stroke-width="2"/>
+  <line x1="120" y1="390" x2="720" y2="390" stroke="#374151" stroke-width="2"/>
+
+  <!-- Y-axis labels -->
+  <text x="105" y="395" text-anchor="end" font-family="Arial, sans-serif" font-size="14" fill="#374151">0%</text>
+  <text x="105" y="326" text-anchor="end" font-family="Arial, sans-serif" font-size="14" fill="#374151">1%</text>
+  <text x="105" y="257" text-anchor="end" font-family="Arial, sans-serif" font-size="14" fill="#374151">2%</text>
+  <text x="105" y="188" text-anchor="end" font-family="Arial, sans-serif" font-size="14" fill="#374151">3%</text>
+  <text x="105" y="119" text-anchor="end" font-family="Arial, sans-serif" font-size="14" fill="#374151">4%</text>
+
+  <!-- Axis title -->
+  <text x="30"
+        y="240"
+        text-anchor="middle"
+        transform="rotate(-90 30 240)"
+        font-family="Arial, sans-serif"
+        font-size="15"
+        fill="#374151">
+    Error Rate
+  </text>
+
+  <!-- Bars -->
+  <rect x="220" y="267" width="150" height="123" fill="#2563eb" rx="4"/>
+  <rect x="470" y="127" width="150" height="263" fill="#ea580c" rx="4"/>
+
+  <!-- Values -->
+  <text x="295" y="253" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#1f2937">
+    1.79%
+  </text>
+
+  <text x="545" y="113" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#1f2937">
+    3.82%
+  </text>
+
+  <!-- Category labels -->
+  <text x="295" y="420" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#1f2937">
+    Reference
+  </text>
+
+  <text x="545" y="420" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#1f2937">
+    Current
+  </text>
+
+  <text x="400"
+        y="458"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="14"
+                fill="#4b5563">
+    Current error rate increased by 2.03 percentage points
+  </text>
+</svg>

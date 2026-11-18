@@ -1,115 +1,51 @@
 # Detecting Changes in System Behavior
 
-Continuous Intelligence | Project 05 | Example Report
+Continuous Intelligence | Project 05 | Custom Report
+
+**Author:** Sandra Otubushin
+**Date:** 2026 November
 
 ## Overview
 
-This project examines whether recent system behavior
-differs meaningfully from an earlier reference period.
+This project examines whether recent system behavior differs meaningfully from an earlier reference period.
 
-The objective is to detect changes in operational metrics
-that may indicate a need for investigation.
+The analysis uses baseline comparison and drift detection to identify changes in operational metrics that may require investigation.
+
+The custom project focuses on this question:
+
+> Does an increase in errors reflect increased workload, or does it indicate reduced service reliability?
 
 ## Data
 
 Two datasets represent different observation periods:
 
-- Reference data representing earlier behavior.
-- Current data representing more recent behavior.
+- **Reference data** represents earlier system behavior and provides the baseline.
+- **Current data** represents more recent system behavior.
 
-Each contains measurements of requests,
-errors, and total latency.
+Each dataset contains:
 
-[View Reference Data](https://github.com/denisecase/cintel-05-drift-detection/blob/main/data/reference_metrics.csv)
+- `requests` - number of requests handled
+- `errors` - number of failed requests
+- `total_latency_ms` - total response time in milliseconds
 
-[View Current Data](https://github.com/denisecase/cintel-05-drift-detection/blob/main/data/current_metrics.csv)
+The files used in this project are:
+
+- [View Reference Data](https://github.com/sandra8918/cintel-05-drift-detection-custom/blob/main/data/reference_metrics.csv)
+- [View Current Data](https://github.com/sandra8918/cintel-05-drift-detection-custom/blob/main/data/current_metrics.csv)
 
 ## Methods
 
-The pipeline calculates the mean of each metric
-for both observation periods.
+The pipeline uses Polars to:
 
-It then calculates:
+1. Read the reference and current datasets.
+2. Calculate summary statistics for both periods.
+3. Calculate the difference between current and reference means.
+4. Compare differences with configured drift thresholds.
+5. Calculate error rates.
+6. Save comparison results as CSV artifacts.
+7. Record the process in `project.log`.
 
-    difference = current_mean - reference_mean
+The difference is calculated as:
 
-Drift is flagged when the absolute difference
-exceeds the configured threshold.
-
-The example thresholds are:
-
-- Requests: 20.
-- Errors: 2.
-- Total latency: 1,000 milliseconds.
-
-These thresholds are illustrative and should
-be justified for a production monitoring system.
-
-## Results
-
-| Metric             | Reference Mean | Current Mean | Difference |
-| ------------------ | -------------: | -----------: | ---------: |
-| Requests           |          128.3 |        164.5 |      +36.2 |
-| Errors             |            2.3 |          6.3 |       +4.0 |
-| Total latency (ms) |          3,835 |        5,670 |     +1,835 |
-
-**All three metrics exceeded their configured thresholds.**
-
-[View Drift Results](https://github.com/denisecase/cintel-05-drift-detection/blob/main/artifacts/drift_summary.csv)
-
-[View Detailed Summary](https://github.com/denisecase/cintel-05-drift-detection/blob/main/artifacts/drift_summary_long.csv)
-
-## Interpretation
-
-The current period shows higher average request volume,
-higher average errors, and greater total latency.
-
-These changes suggest that the system is operating
-differently from its reference behavior.
-
-An analyst could investigate whether the changes
-reflect increased workload, changing demand,
-or a potential performance problem.
-
-## Limitations
-
-The approach compares means using fixed thresholds.
-
-It does not account for variability,
-statistical significance, or seasonal patterns.
-
-Higher request volume may also explain part
-of the increase in errors and total latency.
-
-Additional normalized signals, such as error rate
-and average latency per request, would help
-distinguish workload changes from degraded performance.
-
-## Conclusion
-
-Baseline comparisons provide a practical starting point
-for detecting changes in operational behavior.
-
-Drift indicators are evidence for investigation,
-not proof that a system is malfunctioning.
-
-## Documentation Index
-
-- **Home** - this landing page
-- [**Project Instructions**](project-instructions.md)
-- [**Glossary**](glossary.md)
-- [**API**](api.md)
-- [**Reactive App**](./app/index.html)
-
-## Project Links
-
-- [GitHub Repository](https://github.com/denisecase/cintel-05-drift-detection)
-- [Example Pipeline](https://github.com/denisecase/cintel-05-drift-detection/blob/main/src/cintel/drift_detector.py)
-- [Results and Artifacts](https://github.com/denisecase/cintel-05-drift-detection/tree/main/artifacts)
-
-## Project Resources
-
-- [Project Instructions](project-instructions.md)
-- [Professional Python Guide](https://denisecase.github.io/pro-analytics-02/)
-- [Professional Python Project Explainer](https://pup-pack.github.io/professional-python-project-explainer/).
-- [Suggested Datasets](https://denisecase.github.io/pro-analytics-02/reference/datasets/cintel/)
+```text
+difference = current_mean - reference_mean
