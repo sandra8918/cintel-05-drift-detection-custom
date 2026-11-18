@@ -49,3 +49,41 @@ The difference is calculated as:
 
 ```text
 difference = current_mean - reference_mean
+
+
+## Results
+
+| Metric | Reference Mean | Current Mean | Difference | Drift Flag |
+|---|---:|---:|---:|---|
+| Requests | 128.3 | 164.5 | +36.2 | Yes |
+| Errors | 2.3 | 6.3 | +4.0 | No after threshold change |
+| Total latency (ms) | 3,835 | 5,670 | +1,835 | Yes |
+
+![Reference versus current mean error rates](images/reference-current-comparison.svg)
+
+## Technical Modification
+
+I changed the error drift threshold from **2.0** to **5.0**. I predicted that the error drift flag would change because the observed difference was 4.0. The flag changed from `True` to `False`.
+
+## Service-Reliability Analysis
+
+| Measure | Reference | Current |
+|---|---:|---:|
+| Observations | 10 | 10 |
+| Mean error rate | 1.79% | 3.82% |
+| Difference | — | +2.03 percentage points |
+| Permutation p-value | — | 0.0002 |
+
+The error rate increased from 1.79% to 3.82%, suggesting possible reduced service reliability—not only increased workload.
+
+## Interpretation
+
+The current period shows higher requests, errors, and latency. These results provide evidence for investigation.
+
+## Limitations
+
+This analysis uses a small synthetic dataset and fixed thresholds. It does not account for seasonality or all sources of variability.
+
+## Conclusion
+
+Combining raw metrics with normalized error rates helps distinguish increased workload from possible service degradation.
