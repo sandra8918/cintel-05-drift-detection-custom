@@ -61,10 +61,15 @@ difference = current_mean - reference_mean
 
 ![Reference versus current mean error rates](images/reference-current-comparison.svg)
 
-## Technical Modification
+## Technical Experiment
 
-I changed the error drift threshold from **2.0** to **5.0**. I predicted that the error drift flag would change because the observed difference was 4.0. The flag changed from `True` to `False`.
+I changed the error-drift threshold from 5.0 to 3.0 to test how threshold sensitivity affects drift detection.
 
+I predicted that the error drift flag would change from False to True because the difference between the reference and current error averages exceeds 3.0.
+
+After rerunning the pipeline, `errors_is_drifting_flag` changed to True, while `latency_is_drifting_flag` remained True. The pipeline executed successfully.
+
+This experiment showed that lower thresholds make the detector more sensitive and may create more alerts. Thresholds should be selected carefully based on the normal variability and operational importance of the monitored system.
 ## Service-Reliability Analysis
 
 | Measure | Reference | Current |
